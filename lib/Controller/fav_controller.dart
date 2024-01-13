@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 
-import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FavoritesController extends GetxController {
@@ -16,9 +15,9 @@ class FavoritesController extends GetxController {
   void initSharedPreferences() async {
     sharedPrefs = await SharedPreferences.getInstance();
     // Load existing favorites from Shared Preferences
-    final savedFavorites = sharedPrefs.getStringList('favoriteMovies');
+    final savedFavorites = sharedPrefs.getStringList('favoriteMovies1');
     if (savedFavorites != null) {
-      _favorites.value = savedFavorites.map((id) => int.parse(id)).toSet();
+      _favorites.assignAll(savedFavorites.map((id) => int.parse(id)).toSet());
     }
   }
 
@@ -31,12 +30,12 @@ class FavoritesController extends GetxController {
       _favorites.add(movieId);
     }
     update(); // Notify UI
-    // saveFavorites(); // Save to Shared Preferences
+    saveFavorites(); // Save to Shared Preferences
   }
 
-  // void saveFavorites() async {
-  //   // ignore: invalid_use_of_protected_member
-  //   final favoritesIds = _favorites.value.map((id) => id.toString()).toList();
-  //   await sharedPrefs.setStringList('favoriteMovies', favoritesIds);
-  // }
+  void saveFavorites() async {
+    // ignore: invalid_use_of_protected_member
+    final favoritesIds = _favorites.value.map((id) => id.toString()).toList();
+    await sharedPrefs.setStringList('favoriteMovies1', favoritesIds);
+  }
 }

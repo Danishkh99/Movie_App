@@ -19,7 +19,7 @@ class MovieCard extends StatefulWidget {
 
 class _MovieCardState extends State<MovieCard> {
   var sharedPrefs;
-  var controller = Get.put(FavoritesController());
+  var controller;
 
   void saveFavoriteMovies(List<Movie> favorites) async {
     final favoritesJson =
@@ -86,7 +86,7 @@ class _MovieCardState extends State<MovieCard> {
                   Text(
                     widget.movie.title,
                     style: const TextStyle(
-                        fontWeight: FontWeight.w500, fontSize: 12),
+                        fontWeight: FontWeight.w700, fontSize: 12),
                   ),
                   const SizedBox(
                     height: 5,

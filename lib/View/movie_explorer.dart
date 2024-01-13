@@ -49,6 +49,7 @@ class _MovieExplorerAppState extends State<MovieExplorerApp> {
                 LinearGradient(colors: [Colors.pinkAccent, Colors.blueAccent])),
         child: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
                   onPressed: () {
@@ -59,6 +60,9 @@ class _MovieExplorerAppState extends State<MovieExplorerApp> {
                                 const FavoriteMoviesScreen()));
                   },
                   child: const Text("Favorite Movies")),
+              const SizedBox(
+                height: 10,
+              ),
               FutureBuilder<dynamic>(
                 future: fetchMovies(),
                 builder: (context, snapshot) {
@@ -78,6 +82,9 @@ class _MovieExplorerAppState extends State<MovieExplorerApp> {
                     return const Center(child: CircularProgressIndicator());
                   }
                 },
+              ),
+              const SizedBox(
+                height: 10,
               ),
             ],
           ),
