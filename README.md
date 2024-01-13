@@ -1,6 +1,6 @@
 # movie_app
 
-A new Flutter project.
+A new Flutter project. In this project a api for upcoming movies is consumed hosted on tmdb.
 
 ## Getting Started
 
